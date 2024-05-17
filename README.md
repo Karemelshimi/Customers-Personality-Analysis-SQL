@@ -5,7 +5,6 @@ Customer personality analysis helps a business to modify its product based on it
 Analyze customer's behavior and segment them based on various factors to get the company's ideal customer.
 
 
-
 ## Process
 
 - First, Exploring the data. 
