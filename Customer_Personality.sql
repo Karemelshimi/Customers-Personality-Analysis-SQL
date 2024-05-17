@@ -67,12 +67,10 @@ WHERE Income > 200000
 ----The lowest income is 1730.
 
 ALTER TABLE marketing_campaign
-ADD Age_Segment VARCHAR(10)
-
-EXEC sp_rename 'marketing_campaign.age_segment', 'age_group', 'COLUMN';
+ADD age_group VARCHAR(10)
 
 UPDATE marketing_campaign
-SET Age_Group =
+SET age_group =
 	CASE 
 		WHEN Age BETWEEN 20 AND 29 THEN '20s'
 		WHEN Age BETWEEN 30 AND 39 THEN '30s'
