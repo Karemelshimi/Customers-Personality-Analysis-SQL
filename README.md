@@ -2,12 +2,12 @@
 ## Scenario
 Customer personality analysis helps a business to modify its product based on its target customers from different types of customer segments. For example, instead of spending money to market a new product to every customer in the company’s database, a company can analyze which customer segment is most likely to buy the product and then market the product only on that particular segment.
 ## Busines task 
-Analyze customer's behavior and segment them based on various factors to get the company's ideal customer.
+Analyze customer behavior and segment them based on various factors to get the company's ideal customer.
 
 
 ## Process
 
-- First, Exploring the data. 
+- First, Explore the data. 
 ```SQL
 SELECT *
 FROM marketing_campaign
@@ -82,7 +82,7 @@ WHERE Marital_Status = 'YOLO' OR Marital_Status = 'Absurd'
 ```
 ![Screenshot (151)](https://github.com/Karemelshimi/Customers-Personality-Analysis/assets/153403784/81cc93f2-1945-4639-88e4-62da56b6283f)
 
-- This shows that the highest and lowest income, the highest was 666,666 which is a bit odd compared to the rest of the top 10 income so i will remove it.
+- This shows that the highest and lowest income, the highest was 666,666 which is a bit odd compared to the rest of the top 10 income so I will remove it.
 
 ```SQL 
 SELECT TOP 10 Income
@@ -131,8 +131,8 @@ SET age_group =
 ![Screenshot (156)](https://github.com/Karemelshimi/Customers-Personality-Analysis/assets/153403784/d455c749-78ca-4224-84a0-111c4bcacaee)
 
 - This query segments people based on their age, grouping them into age groups with a decade difference between them and counting them.
-The first largest age group are customers in their 50s, second largest age group are 60s, and the third largest age group are customers in their 40s.
-This means that the majority of the customers are middle aged people.
+The first largest age group is customers in their 50s, the second largest age group are customers in their 60s, and the third largest age group is customers in their 40s.
+This means that the majority of the customers are middle-aged people.
 
 ```SQL
 SELECT age_group, COUNT(age_group) AS Total_Count_age_group
@@ -142,7 +142,7 @@ ORDER BY age_group
 ```
 ![Screenshot (157)](https://github.com/Karemelshimi/Customers-Personality-Analysis/assets/153403784/afcd1d57-01ec-476e-bd35-d28b415eae39)
 
-- This query lets us know the Average income for the customers, as we can see that customer in their 80s have the highest average income.
+- This query lets us know the Average income for the customers, as we can see that customers in their 80s have the highest average income.
 You need to know that the average income of the people in the 80s age group is based only on 15 customers who belong to this age group.
 ```SQL
 SELECT age_group, AVG(Income) AS Avg_Income
@@ -165,8 +165,13 @@ ORDER BY age_group
 
 - This query lets us explore  the marital status of the customers based on the age group that they belong to
 This is a summary based on the query that shows the most marital status for customers by each age group.
---20s single --40s married --60s married
---30s single --50s married --70s married --80s married
+20s single 
+40s married
+60s married
+30s single
+50s married
+70s married
+80s married
 ```SQL
 SELECT age_group, Marital_Status, COUNT(Marital_Status) AS Count_marital_status
 FROM marketing_campaign
@@ -175,14 +180,14 @@ ORDER BY age_group
 ```
 ![Screenshot (160)](https://github.com/Karemelshimi/Customers-Personality-Analysis/assets/153403784/c442bb64-b760-4dbe-a0f1-e3ea34acbe8f)
 
-- This query shows how many enrolment days were in the past 2 years, after running the query it shows that there was 662 days which is less than 2 years.
+- This query shows how many enrolment days were in the past 2 years, after running the query it shows that there were 662 days which is less than 2 years.
 ```SQL
 SELECT COUNT(DISTINCT Dt_Customer) AS Count_of_Days
 FROM marketing_campaign
 ```
 ![Screenshot (161)](https://github.com/Karemelshimi/Customers-Personality-Analysis/assets/153403784/1e59ebdb-039d-43be-9eaf-c1ad9ab7a531)
 
-- This query claculates the total expenditure on different product categories.
+- This query calculates the total expenditure on different product categories.
 ```SQL
 SELECT 
 		SUM(MntWines) AS Total_Wine,
@@ -248,12 +253,12 @@ ORDER BY age_group
 
 - This query show the spending of the customers and their income based on their age group.
 The highest Total spending by customers was on Wine, but for customers in their 20s was on Meat.
-Second highest total spending was on Meat by every age group except customers in their 20s was on Wine.
-Third highest total spending was on Gold by every age group except customers in their 80s was on fish and customers in their 20s was on sweets.
-Fourth highest total spending was on fish by every age group except customers in their 80s was on fruits.
-Fifth highest total spending had major differences in spending among the age group:
+The second highest total spending was on Meat by every age group except customers in their 20s was on Wine.
+The third highest total spending was on Gold by every age group except customers in their 80s on fish and customers in their 20s on sweets.
+The fourth highest total spending was on fish by every age group except customers in their 80s was on fruits.
+Fifth highest total spending had major differences in spending among the age groups:
 customers in their 40s, 50s, 70s, and 80s spended on sweets, customers in their 30s, 60s spended on fruits, customers in their 20s spended on gold.
-The least spending by age groups was like that: 20s, 40s, 50, and 70s on  fruits, 30s and 60s sweets, 80s on gold.
+The least spending by age groups was like that: 20s, 40s, 50s, and 70s on  fruits, 30s and 60s sweets, and 80s on gold.
 
 ```SQL
 SELECT age_group, 
@@ -292,7 +297,7 @@ GROUP BY Marital_Status
 
 - Comparing the difference in spending based on the Education
 Customers with graduate, PhD, master's, and 2nd cycle degrees exhibit the highest expenditure on wine, while basic-educated customers allocate the most spending towards gold.
-The least spending was on Fruits for graduated, PhD, 2n Cycle, and Basic customers, whereas customers with master's degrees spend the least on sweets.
+The least spending was on Fruits for graduated, PhD, 2n Cycle, and Basic customers, whereas customers with master's degrees spent the least on sweets.
 ```SQL
 SELECT Education,
 		SUM(MntWines) AS Total_Wine, 
@@ -306,8 +311,8 @@ GROUP BY Education
 ```
 ![Screenshot (168)](https://github.com/Karemelshimi/Customers-Personality-Analysis/assets/153403784/0cc81862-56ef-45dd-acef-6588c88938cd)
 
-- The next and final query show the total amount spent on each product by the purchase method.
-But first we need to alter the column MntMeatProducts and MntFruits to make it `BIGINT` because there is an arithmetic overflow error.
+- The next and final query shows the total amount spent on each product by the purchase method.
+But first, we need to alter the column MntMeatProducts and MntFruits to make it `BIGINT` because there is an arithmetic overflow error.
 ```SQL
 ALTER TABLE marketing_campaign
 ALTER COLUMN MntMeatProducts BIGINT
@@ -318,7 +323,7 @@ ALTER COLUMN MntFruits BIGINT
 
 We multiply the amount spent on each product (Fish, Meat, Fruit, Gold, Sweets) by the count of purchases made through each method (Web, Deals, Catalog, Store) then divide it by the sum of all purchase platforms to get the total amount spent on each product for each purchasing method.
 Each product is represented by a separate column, making it easy to see the total amount spent on each product through different purchasing methods.
-There is a dedicated column for purchasing method called `Purchase_Method`.
+There is a dedicated column for purchasing methods called `Purchase_Method`.
 ```SQL
 SELECT 
     'Web' AS Purchase_Method,
