@@ -29,7 +29,7 @@ WHERE Income IS NULL
 ```
 ![Screenshot (144)](https://github.com/Karemelshimi/Customers-Personality-Analysis/assets/153403784/7e00fa5e-c598-47a8-aa2f-1166cbb99fb5)
 
-- The data has 3 customers that are older than 90 years they will not be relied on their purchases as they are probably not alive anymore.
+- The data includes three customers over the age of 90; their purchasing patterns will not be considered as they are likely not alive anymore.
 ```SQL
 SELECT Age
 FROM marketing_campaign
